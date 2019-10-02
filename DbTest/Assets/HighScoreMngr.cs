@@ -30,8 +30,10 @@ public class HighScoreMngr : MonoBehaviour
 
             using (IDbCommand dbCmd = dbConnection.CreateCommand())
             {
+                //string sqlAdd = "INSERT INTO HighScores (Name, Score) VALUES (\"Jim\", 500)";
                 string sqlQuery = "SELECT * FROM HighScores";
 
+                //dbCmd.CommandText = sqlAdd;
                 dbCmd.CommandText = sqlQuery;
 
                 using (IDataReader reader = dbCmd.ExecuteReader())
@@ -39,6 +41,7 @@ public class HighScoreMngr : MonoBehaviour
                     while (reader.Read())
                     {
                         Debug.Log(reader.GetString(1));
+                        print("Learn SQL");
                     }
                     dbConnection.Close();
                     reader.Close();
